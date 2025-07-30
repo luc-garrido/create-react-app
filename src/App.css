@@ -1,38 +1,16 @@
-.App {
-  text-align: center;
-}
+import React from 'react';
+import Login from './components/Login';
+import { useAuth } from './auth/AuthContext'; // Usa o hook do contexto
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+function App() {
+  const { isLoggedIn } = useAuth(); // Obtém o estado de login do contexto
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+  if (isLoggedIn) {
+    // Redireciona para a página principal após o login
+    return <div>Página Principal</div>; // Substitua pelo seu componente principal
   }
+
+  return <Login />;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+export default App;
